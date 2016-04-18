@@ -224,10 +224,9 @@ void CMy2DObject4B::draw(CDC &dc) {
 	CMy2DPoint P1(m_center.m_x + A / 2, m_center.m_y - A1 / 2);
 	P1 = rotatedPoint(P1, m_center, m_dAngle);
 	CMy2DPoint TB(m_center.m_x + A / 2, m_center.m_y - A / 2);
+	TB = rotatedPoint(TB, m_center, m_dAngle);
 
-	dc.MoveTo(TLs.m_x, TLs.m_y);
-	dc.AngleArc(TL.m_x, TL.m_y, A2, m_dAngle, m_dAngle - 90);
-	dc.LineTo(BL1.m_x, BL1.m_y);
+	dc.MoveTo(BL1.m_x, BL1.m_y);
 	dc.LineTo(BL2.m_x, BL2.m_y);
 	dc.LineTo(BL3.m_x, BL3.m_y);
 	dc.LineTo(BR.m_x, BR.m_y);
@@ -237,4 +236,6 @@ void CMy2DObject4B::draw(CDC &dc) {
 	dc.LineTo(P1.m_x, P1.m_y);
 	dc.LineTo(TB.m_x, TB.m_y);
 	dc.LineTo(TLs.m_x, TLs.m_y);
+	dc.AngleArc(TL.m_x, TL.m_y, A2, - m_dAngle, - 90);
+	dc.LineTo(BL1.m_x, BL1.m_y);
 }
