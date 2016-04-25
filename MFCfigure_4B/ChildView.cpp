@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "MFCfigure_4B.h"
 #include "ChildView.h"
-#include "CMy2DObject.h"
 #include "CMy2DPoint.h"
 
 #define M_PI 3.1415926535897932384626433832795
@@ -25,6 +24,16 @@
 
 CChildView::CChildView()
 {
+	double A = 10.0;
+	double A1 = 2.0;
+	double A2 = 3.0;
+	double A3 = 3.0;
+	double size = 10.0;
+	CMy2DPoint center(200.0, 200.0);
+	double angle = -10.0;
+
+	CMy2DObject4B shape(size * A, size * A1, size * A2, size * A3, center, angle);
+	m_shape = shape;
 }
 
 CChildView::~CChildView()
@@ -34,6 +43,9 @@ CChildView::~CChildView()
 
 BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_PAINT()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 
@@ -57,20 +69,50 @@ void CChildView::OnPaint()
 {
 	CPaintDC dc(this); // контекст устройства для рисования
 	
-	double A = 10.0;
-	double A1 = 2.0;
-	double A2 = 3.0;
-	double A3 = 3.0;
-	double size = 10.0;
-	CMy2DPoint center(200.0, 200.0);
-	double angle = -10.0;
-
-	CMy2DObject4B shape1(size * A, size * A1, size * A2, size * A3, center, angle);
-
-	shape1.draw(dc);
+	
+	m_shape.draw(dc);
 	
 	// TODO: Добавьте код обработки сообщений
 	
 	// Не вызывайте CWnd::OnPaint() для сообщений рисования
 }
 
+
+
+void CChildView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	if (m_shape.isInside(point.x, point.y)) {
+		m_bCatched = true;
+		m_MousePos = point;
+		SetCapture();
+	}
+
+	CWnd::OnLButtonDown(nFlags, point);
+}
+
+
+void CChildView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	m_bCatched = false;
+	ReleaseCapture();
+	CWnd::OnLButtonUp(nFlags, point);
+}
+
+
+void CChildView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	if(m_bCatched){
+		CRect rect;
+		GetClientRect(&rect);
+		point.x = min(rect.right, max(rect.left, point.x));
+		point.y = min(rect.bottom, max(rect.top, point.y));
+		CPoint Delta = point - m_MousePos;
+		m_shape.move(Delta.x, Delta.y, 0);
+		m_MousePos = point;
+		Invalidate();
+	}
+	CWnd::OnMouseMove(nFlags, point);
+}

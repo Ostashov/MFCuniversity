@@ -4,6 +4,7 @@
 
 
 #pragma once
+#include "CMy2DObject.h"
 
 
 // окно CChildView
@@ -16,6 +17,10 @@ public:
 
 // Атрибуты
 public:
+	bool m_bCatched;
+	CPoint m_MousePos;
+protected:
+	CMy2DObject4B m_shape;
 
 // Операции
 public:
@@ -32,5 +37,9 @@ public:
 protected:
 	afx_msg void OnPaint();
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
