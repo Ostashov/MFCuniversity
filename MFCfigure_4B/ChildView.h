@@ -5,6 +5,7 @@
 
 #pragma once
 #include "CMy2DObject.h"
+#include "DlgProperties.h"
 
 
 // окно CChildView

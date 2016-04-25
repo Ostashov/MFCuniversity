@@ -28,7 +28,7 @@ CChildView::CChildView()
 	double A1 = 2.0;
 	double A2 = 3.0;
 	double A3 = 3.0;
-	double size = 10.0;
+	double size = 20.0;
 	CMy2DPoint center(200.0, 200.0);
 	double angle = -10.0;
 

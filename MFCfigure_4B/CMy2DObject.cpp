@@ -175,23 +175,33 @@ void CMy2DObject4B::rotate(double dAngle) {
 
 bool CMy2DObject4B::isInside(const CMy2DPoint &customPoint) const {
 	bool result = false;
-	CMy2DPoint newCustomPoint;
+	//CMy2DPoint newCustomPoint;
 
-	newCustomPoint = rotatedPoint(customPoint, m_center, -1.0 * m_dAngle); // rotate custom point to -Angle
+	//newCustomPoint = rotatedPoint(customPoint, m_center, - m_dAngle); // rotate custom point to -Angle
+	CMy2DPoint newPoint = rotatedPoint(customPoint, m_center, -m_dAngle); // rotate custom point to -Angle;
 
-	result = (newCustomPoint.m_x < m_center.m_x + A / 2 - A1) ||
-		((newCustomPoint.m_y < m_center.m_y + A / 2) & (newCustomPoint.m_y > m_center.m_y + A1 / 2)) ||
-		((newCustomPoint.m_y > m_center.m_y - A / 2) & (newCustomPoint.m_y < m_center.m_y - A1 / 2)); // right middle test
+	result = (newPoint.m_x < m_center.m_x + A / 2) & (newPoint.m_x > m_center.m_x - A / 2);
+	result = result & (newPoint.m_y > m_center.m_y - A / 2) & (newPoint.m_y < m_center.m_y + A / 2);
+	
+	CMy2DPoint TL(m_center.m_x - A / 2, m_center.m_y - A / 2);
+	result = result & (distancePoints(newPoint, TL) > A2);
 
-	CMy2DPoint pointLT(m_center.m_x - A / 2, m_center.m_y + A / 2);
-	result = result & (distancePoints(newCustomPoint, pointLT) > A2); // left top test
+	CMy2DPoint BL(m_center.m_x - A / 2, m_center.m_y + A / 2);
+	result = result & ((newPoint.m_x > BL.m_x + A3) || (newPoint.m_y < BL.m_y - A3));
+	result = result & ((newPoint.m_x < m_center.m_x + A / 2 - A1) || (newPoint.m_y < m_center.m_y - A1 / 2) || (newPoint.m_y > m_center.m_y + A1 / 2));
+	//result = (newCustomPoint.m_x < m_center.m_x + A / 2 - A1) ||
+	//	((newCustomPoint.m_y < m_center.m_y + A / 2) & (newCustomPoint.m_y > m_center.m_y + A1 / 2)) ||
+	//	((newCustomPoint.m_y > m_center.m_y - A / 2) & (newCustomPoint.m_y < m_center.m_y - A1 / 2)); // right middle test
 
-	CMy2DPoint pointLB(m_center.m_x - A / 2, m_center.m_y - A / 2);
-	result = result & ((newCustomPoint.m_x - pointLB.m_x > A3) || (newCustomPoint.m_y - pointLB.m_y > A3)); // left bottom test
+	//CMy2DPoint pointLT(m_center.m_x - A / 2, m_center.m_y + A / 2);
+	//result = result & (distancePoints(newCustomPoint, pointLT) > A2); // left top test
 
-	result = result &
-		((newCustomPoint.m_x < m_center.m_x + A / 2) || (newCustomPoint.m_x >m_center.m_x - A / 2)) &
-		((newCustomPoint.m_y < m_center.m_y + A / 2) || (newCustomPoint.m_y >m_center.m_y - A / 2));
+	//CMy2DPoint pointLB(m_center.m_x - A / 2, m_center.m_y - A / 2);
+	//result = result & ((newCustomPoint.m_x - pointLB.m_x > A3) || (newCustomPoint.m_y - pointLB.m_y > A3)); // left bottom test
+
+	//result = result &
+	//	((newCustomPoint.m_x < m_center.m_x + A / 2) || (newCustomPoint.m_x >m_center.m_x - A / 2)) &
+	//	((newCustomPoint.m_y < m_center.m_y + A / 2) || (newCustomPoint.m_y >m_center.m_y - A / 2));
 
 	return result;
 };
