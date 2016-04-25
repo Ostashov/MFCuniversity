@@ -103,6 +103,7 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="CMy2DObject.h" />
     <ClInclude Include="CMy2DPoint.h" />
+    <ClInclude Include="DlgProperties.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFCfigure_4B.h" />
     <ClInclude Include="Resource.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CMy2DObject.cpp" />
     <ClCompile Include="CMy2DPoint.cpp" />
+    <ClCompile Include="DlgProperties.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFCfigure_4B.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -132,4 +134,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="MFCfigure_4B.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

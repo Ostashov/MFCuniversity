@@ -46,6 +46,7 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONDBLCLK()
 END_MESSAGE_MAP()
 
 
@@ -115,4 +116,16 @@ void CChildView::OnMouseMove(UINT nFlags, CPoint point)
 		Invalidate();
 	}
 	CWnd::OnMouseMove(nFlags, point);
+}
+
+
+void CChildView::OnLButtonDblClk(UINT nFlags, CPoint point)
+{
+	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
+	if (m_shape.isInside(point.x, point.y)) {
+		CDlgProperties Dlg;
+		Dlg.DoModal();
+	}
+
+	CWnd::OnLButtonDblClk(nFlags, point);
 }
