@@ -24,6 +24,12 @@ public:
 	double getAngle() const;
 	void printSettings() const;
 	void set();
+	void setA(double dValue);
+	void setA1(double dValue);
+	void setA2(double dValue);
+	void setA3(double dValue);
+	void setAngle(double dValue);
+	bool testProperties(double dA, double dA1, double dA2, double dA3, double dAngle, CMy2DPoint center);
 	void move(const CMy2DPoint &delta, double dAngle);
 	void move(double dX, double dY, double dAngle);
 	void rotate(double dAngle);

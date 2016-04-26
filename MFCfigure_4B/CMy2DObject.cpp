@@ -107,26 +107,28 @@ void CMy2DObject4B::set() {
 		cout << "m_dAngle: ";
 		cin >> newAngle;
 
-		CMy2DPoint vector1(newA / 2 - newA1, newA1 / 2);
-		CMy2DPoint pointB;
-		pointB = m_center + vector1;
+		//CMy2DPoint vector1(newA / 2 - newA1, newA1 / 2);
+		//CMy2DPoint pointB;
+		//pointB = m_center + vector1;
 
-		CMy2DPoint vector2(newA2 / 2 - newA1, -newA1 / 2);
-		CMy2DPoint pointC;
-		pointC = m_center + vector2;
+		//CMy2DPoint vector2(newA2 / 2 - newA1, -newA1 / 2);
+		//CMy2DPoint pointC;
+		//pointC = m_center + vector2;
 
-		CMy2DPoint vector3(-newA / 2, newA / 2);
-		CMy2DPoint pointLT;
-		pointLT = m_center + vector3;
+		//CMy2DPoint vector3(-newA / 2, newA / 2);
+		//CMy2DPoint pointLT;
+		//pointLT = m_center + vector3;
 
-		CMy2DPoint vector4(newA / 2 - newA3, newA2 / 2 - newA3);
-		CMy2DPoint pointLB;
-		pointLB = m_center - vector4;
+		//CMy2DPoint vector4(newA / 2 - newA3, newA2 / 2 - newA3);
+		//CMy2DPoint pointLB;
+		//pointLB = m_center - vector4;
 
-		flag = !((newA > 0) & (newA1 > 0) & (newA2 > 0) & (newA3 > 0) &
-			(newA1 < newA) & (newA2 < newA) & (newA3 < newA) & (newA3 + newA2 < newA) & // on self-intersection test
-			(distancePoints(pointLT, pointB) > newA2) &
-			(distancePoints(pointLB, pointC) > 0));
+		//flag = !((newA > 0) & (newA1 > 0) & (newA2 > 0) & (newA3 > 0) &
+		//	(newA1 < newA) & (newA2 < newA) & (newA3 < newA) & (newA3 + newA2 < newA) & // on self-intersection test
+		//	(distancePoints(pointLT, pointB) > newA2) &
+		//	(distancePoints(pointLB, pointC) > 0));
+
+		flag = !testProperties(newA, newA1, newA2, newA3, newAngle, newCenter);
 
 		if (flag) {
 			HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -152,6 +154,33 @@ void CMy2DObject4B::set() {
 		}
 	} while (flag);
 };
+
+bool CMy2DObject4B::testProperties(double newA, double newA1, double newA2, double newA3, double newAngle, CMy2DPoint center) {
+	bool flag = true;
+
+	CMy2DPoint vector1(newA / 2 - newA1, newA1 / 2);
+	CMy2DPoint pointB;
+	pointB = center + vector1;
+
+	CMy2DPoint vector2(newA2 / 2 - newA1, -newA1 / 2);
+	CMy2DPoint pointC;
+	pointC = center + vector2;
+
+	CMy2DPoint vector3(-newA / 2, newA / 2);
+	CMy2DPoint pointLT;
+	pointLT = center + vector3;
+
+	CMy2DPoint vector4(newA / 2 - newA3, newA2 / 2 - newA3);
+	CMy2DPoint pointLB;
+	pointLB = center - vector4;
+
+	flag = !((newA > 0) & (newA1 > 0) & (newA2 > 0) & (newA3 > 0) &
+		(newA1 < newA) & (newA2 < newA) & (newA3 < newA) & (newA3 + newA2 < newA) & // on self-intersection test
+		(distancePoints(pointLT, pointB) > newA2) &
+		(distancePoints(pointLB, pointC) > 0));
+
+	return (!flag);
+}
 
 void CMy2DObject4B::move(const CMy2DPoint &delta, double dAngle) {
 	m_dAngle += dAngle;
