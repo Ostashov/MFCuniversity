@@ -13,7 +13,6 @@
 #define IDC_E_A2                        1003
 #define IDC_E_A3                        1004
 #define IDC_E_X                         1005
-#define IDC_EDIT3                       1006
 #define IDC_E_Y                         1006
 
 // Next default values for new objects

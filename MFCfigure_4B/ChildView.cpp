@@ -31,6 +31,7 @@ CChildView::CChildView()
 	double size = 1.0;
 	CMy2DPoint center(200.0, 200.0);
 	double angle = -20.0;
+	m_bCatched = false;
 
 	CMy2DObject4B shape(size * A, size * A1, size * A2, size * A3, center, angle);
 	m_shape = shape;
@@ -124,7 +125,19 @@ void CChildView::OnLButtonDblClk(UINT nFlags, CPoint point)
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (m_shape.isInside(point.x, point.y)) {
 		CDlgProperties Dlg(m_shape.getA(0), m_shape.getA(1), m_shape.getA(2), m_shape.getA(3), m_shape.getAngle(), m_shape.getCenter(), NULL);
-		Dlg.DoModal();
+		//Dlg.DoModal();
+		if (Dlg.DoModal()) {
+			CMy2DPoint newCenter(Dlg.m_dCenterX, Dlg.m_dCenterY);
+			if (testProperties(Dlg.m_A, Dlg.m_A1, Dlg.m_A2, Dlg.m_A3, Dlg.m_dAngle, newCenter)) {
+				m_shape.setA(Dlg.m_A);
+				m_shape.setA1(Dlg.m_A1);
+				m_shape.setA2(Dlg.m_A2);
+				m_shape.setA3(Dlg.m_A3);
+				m_shape.setAngle(Dlg.m_dAngle);
+				m_shape.setCenter(newCenter);
+			}
+			Invalidate();
+		}
 	}
 
 	CWnd::OnLButtonDblClk(nFlags, point);

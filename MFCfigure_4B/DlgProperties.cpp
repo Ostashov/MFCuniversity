@@ -53,9 +53,46 @@ void CDlgProperties::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_E_Y, m_dCenterY);
 }
 
-
 BEGIN_MESSAGE_MAP(CDlgProperties, CDialogEx)
+	ON_BN_CLICKED(IDOK, &CDlgProperties::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
 // обработчики сообщений CDlgProperties
+
+
+void CDlgProperties::OnBnClickedOk()
+{
+	// TODO: добавьте свой код обработчика уведомлений
+	CString str;
+
+	CEdit *pEdit = (CEdit *)GetDlgItem(IDC_E_A);
+	pEdit->GetWindowText(str);
+	m_A = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_A1);
+	pEdit->GetWindowText(str);
+	m_A1 = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_A2);
+	pEdit->GetWindowText(str);
+	m_A2 = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_A3);
+	pEdit->GetWindowText(str);
+	m_A3 = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_ANGLE);
+	pEdit->GetWindowText(str);
+	m_dAngle = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_X);
+	pEdit->GetWindowText(str);
+	m_dCenterX = _wtof(str);
+
+	pEdit = (CEdit *)GetDlgItem(IDC_E_Y);
+	pEdit->GetWindowText(str);
+	m_dCenterY = _wtof(str);
+	//use atof for non Unicode strings
+	CDialogEx::OnOK();
+}

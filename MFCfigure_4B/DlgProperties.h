@@ -19,6 +19,7 @@ public:
 
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // поддержка DDX/DDV
+	//BOOL CDlgProperties::OnInitDialog();
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -29,4 +30,5 @@ public:
 	double m_A3;
 	double m_dCenterX;
 	double m_dCenterY;
+	afx_msg void OnBnClickedOk();
 };

@@ -179,7 +179,7 @@ void CMy2DObject4B::setCenter(CMy2DPoint newCenter) {
 	m_center = newCenter;
 }
 
-bool CMy2DObject4B::testProperties(double newA, double newA1, double newA2, double newA3, double newAngle, CMy2DPoint center) {
+bool testProperties(double newA, double newA1, double newA2, double newA3, double newAngle, CMy2DPoint center) {
 	bool flag = true;
 
 	CMy2DPoint vector1(newA / 2 - newA1, newA1 / 2);

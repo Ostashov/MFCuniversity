@@ -30,7 +30,6 @@ public:
 	void setA3(double dValue);
 	void setAngle(double dValue);
 	void setCenter(CMy2DPoint center);
-	bool testProperties(double dA, double dA1, double dA2, double dA3, double dAngle, CMy2DPoint center);
 	void move(const CMy2DPoint &delta, double dAngle);
 	void move(double dX, double dY, double dAngle);
 	void rotate(double dAngle);
@@ -41,3 +40,4 @@ public:
 };
 
 CMy2DPoint rotatedPoint(const CMy2DPoint &point, const CMy2DPoint &centerPoint, double dAngle);
+bool testProperties(double dA, double dA1, double dA2, double dA3, double dAngle, CMy2DPoint center);
