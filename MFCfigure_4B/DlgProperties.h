@@ -9,6 +9,7 @@ class CDlgProperties : public CDialogEx
 
 public:
 	CDlgProperties(CWnd* pParent = NULL);   // стандартный конструктор
+	CDlgProperties(double A, double A1, double A2, double A3, double Angle, CWnd* pParent /*=NULL*/);
 	virtual ~CDlgProperties();
 
 // Данные диалогового окна
@@ -22,4 +23,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	double m_dAngle;
+	double m_A;
+	double m_A1;
+	double m_A2;
+	double m_A3;
 };

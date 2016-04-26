@@ -24,13 +24,13 @@
 
 CChildView::CChildView()
 {
-	double A = 10.0;
-	double A1 = 2.0;
-	double A2 = 3.0;
-	double A3 = 3.0;
-	double size = 20.0;
+	double A = 200.0;
+	double A1 = 40.0;
+	double A2 = 60.0;
+	double A3 = 60.0;
+	double size = 1.0;
 	CMy2DPoint center(200.0, 200.0);
-	double angle = -10.0;
+	double angle = -20.0;
 
 	CMy2DObject4B shape(size * A, size * A1, size * A2, size * A3, center, angle);
 	m_shape = shape;
@@ -123,7 +123,7 @@ void CChildView::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (m_shape.isInside(point.x, point.y)) {
-		CDlgProperties Dlg;
+		CDlgProperties Dlg(m_shape.getA(0), m_shape.getA(1), m_shape.getA(2), m_shape.getA(3), m_shape.getAngle(), NULL);
 		Dlg.DoModal();
 	}
 
