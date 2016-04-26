@@ -27,4 +27,6 @@ public:
 	double m_A1;
 	double m_A2;
 	double m_A3;
+	double m_dCenterX;
+	double m_dCenterY;
 };

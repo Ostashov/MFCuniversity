@@ -18,6 +18,8 @@ CDlgProperties::CDlgProperties(CWnd* pParent)
 	, m_A1(0)
 	, m_A2(0)
 	, m_A3(0)
+	, m_dCenterX(0)
+	, m_dCenterY(0)
 {
 
 }
@@ -45,6 +47,8 @@ void CDlgProperties::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_E_A1, m_A1);
 	DDX_Text(pDX, IDC_E_A2, m_A2);
 	DDX_Text(pDX, IDC_E_A3, m_A3);
+	DDX_Text(pDX, IDC_E_X, m_dCenterX);
+	DDX_Text(pDX, IDC_E_Y, m_dCenterY);
 }
 
 
