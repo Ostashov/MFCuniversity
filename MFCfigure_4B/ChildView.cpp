@@ -123,7 +123,7 @@ void CChildView::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	// TODO: добавьте свой код обработчика сообщений или вызов стандартного
 	if (m_shape.isInside(point.x, point.y)) {
-		CDlgProperties Dlg(m_shape.getA(0), m_shape.getA(1), m_shape.getA(2), m_shape.getA(3), m_shape.getAngle(), NULL);
+		CDlgProperties Dlg(m_shape.getA(0), m_shape.getA(1), m_shape.getA(2), m_shape.getA(3), m_shape.getAngle(), m_shape.getCenter(), NULL);
 		Dlg.DoModal();
 	}
 

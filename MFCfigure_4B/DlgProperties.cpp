@@ -24,13 +24,15 @@ CDlgProperties::CDlgProperties(CWnd* pParent)
 
 }
 
-CDlgProperties::CDlgProperties(double A, double A1, double A2, double A3, double Angle, CWnd* pParent /*=NULL*/)
+CDlgProperties::CDlgProperties(double A, double A1, double A2, double A3, double Angle, CMy2DPoint center, CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_PROPERTIES, pParent)
 	, m_dAngle(Angle)
 	, m_A(A)
 	, m_A1(A1)
 	, m_A2(A2)
 	, m_A3(A3)
+	, m_dCenterX(center.m_x)
+	, m_dCenterY(center.m_y)
 {
 
 }

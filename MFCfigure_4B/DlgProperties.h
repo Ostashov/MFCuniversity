@@ -1,5 +1,5 @@
 #pragma once
-
+#include "CMy2DPoint.h"
 
 // диалоговое окно CDlgProperties
 
@@ -9,7 +9,7 @@ class CDlgProperties : public CDialogEx
 
 public:
 	CDlgProperties(CWnd* pParent = NULL);   // стандартный конструктор
-	CDlgProperties(double A, double A1, double A2, double A3, double Angle, CWnd* pParent /*=NULL*/);
+	CDlgProperties(double A, double A1, double A2, double A3, double Angle, CMy2DPoint center, CWnd* pParent /*=NULL*/);
 	virtual ~CDlgProperties();
 
 // Данные диалогового окна
