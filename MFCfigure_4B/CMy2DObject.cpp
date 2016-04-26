@@ -155,6 +155,30 @@ void CMy2DObject4B::set() {
 	} while (flag);
 };
 
+void CMy2DObject4B::setA(double newA) {
+	A = newA;
+}
+
+void CMy2DObject4B::setA1(double newA1) {
+	A1 = newA1;
+}
+
+void CMy2DObject4B::setA2(double newA2) {
+	A2 = newA2;
+}
+
+void CMy2DObject4B::setA3(double newA3) {
+	A3 = newA3;
+}
+
+void CMy2DObject4B::setAngle(double newAngle) {
+	m_dAngle = newAngle;
+}
+
+void CMy2DObject4B::setCenter(CMy2DPoint newCenter) {
+	m_center = newCenter;
+}
+
 bool CMy2DObject4B::testProperties(double newA, double newA1, double newA2, double newA3, double newAngle, CMy2DPoint center) {
 	bool flag = true;
 
