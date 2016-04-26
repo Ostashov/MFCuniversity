@@ -199,9 +199,9 @@ bool testProperties(double newA, double newA1, double newA2, double newA3, doubl
 	pointLB = center - vector4;
 
 	flag = !((newA > 0) & (newA1 > 0) & (newA2 > 0) & (newA3 > 0) &
-		(newA1 < newA) & (newA2 < newA) & (newA3 < newA) & (newA3 + newA2 < newA) & // on self-intersection test
-		(distancePoints(pointLT, pointB) > newA2) &
-		(distancePoints(pointLB, pointC) > 0));
+		(newA1 <= newA) & (newA2 <= newA) & (newA3 <= newA) & (newA3 + newA2 <= newA) & // on self-intersection test
+		(distancePoints(pointLT, pointB) >= newA2) &
+		(distancePoints(pointLB, pointC) >= 0));
 
 	return (!flag);
 }
